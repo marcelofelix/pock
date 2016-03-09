@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pock</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= csrf_meta_tags %>
+  </head>
+
+
+  <body ng-app="pockApp">
+    <div ng-view=""></div>
+    <%= javascript_include_tag 'application' %>
+  </body>
+
+
+</html>
