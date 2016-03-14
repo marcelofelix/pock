@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require angular-material
- *= require_tree .
+ *= require angular-ui-notification
+ *= require _main
  *= require_self
  */

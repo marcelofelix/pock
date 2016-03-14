@@ -5,12 +5,25 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= csrf_meta_tags %>
+    <%= javascript_include_tag 'application' %>
   </head>
 
 
   <body ng-app="pockApp">
-    <div ng-view=""></div>
-    <%= javascript_include_tag 'application' %>
+    <div>
+      <md-toolbar md-open="demo.isOpen" count="demo.count" md-direction="{{demo.selectedDirection}}">
+        <md-toolbar>
+          <md-fab-actions class="md-toolbar-tools">
+            <md-button aria-label="comment" class="md-icon-button" ng-href="/#/product">
+              <md-icon md-svg-src="/assets/images/product.svg"></md-icon>
+            </md-button>
+          </md-fab-actions>
+        </md-toolbar>
+      </md-toolbar>
+    </div>
+    <div class="home__content">
+      <div ng-view=""></div>
+    </div>
   </body>
 
 

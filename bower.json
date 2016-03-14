@@ -19,6 +19,8 @@
   "dependencies": {
     "angular": "^1.5.0",
     "angular-route": "^1.5.0",
-    "angular-material": "^1.0.6"
+    "angular-material": "^1.0.6",
+    "angular-ui-notification": "^0.1.0",
+    "angular-input-masks": "^2.1.1"
   }
 }

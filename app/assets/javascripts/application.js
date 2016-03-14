@@ -11,10 +11,12 @@
 // about supported directives.
 //
 //= require angular
+//= require angular-rails-templates
 //= require angular-route
 //= require angular-animate
 //= require angular-aria
 //= require angular-material
 //= require angular-messages
-//= require angular-rails-templates
+//= require angular-ui-notification
+//= require angular-input-masks
 //= require_tree .
