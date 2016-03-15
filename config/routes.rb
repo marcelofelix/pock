@@ -57,4 +57,6 @@ Rails.application.routes.draw do
 
   root to: 'application#angular'
   resources :products
+  resources :purchase
+  match 'purchase/import', to: 'purchase#import', via: :post
 end

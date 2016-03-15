@@ -6,6 +6,7 @@ angular
     'ngMaterial',
     'ui-notification',
     'ui.utils.masks',
+    'ngFileUpload',
     'templates'
   ]).config(function($routeProvider){
     $routeProvider
@@ -39,6 +40,16 @@ angular
       resolve: {
         product: function($route, ProductService){
           return ProductService.get($route.current.params.code);
+        }
+      }
+    })
+    .when('/purchase', {
+      templateUrl: 'buy/purchase-list.html',
+      controller: 'PurchaseListController',
+      controllerAs: 'vm',
+      resolve: {
+        purchases: function(PurchaseService){
+          return PurchaseService.list();
         }
       }
     });

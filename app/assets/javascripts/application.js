@@ -19,4 +19,6 @@
 //= require angular-messages
 //= require angular-ui-notification
 //= require angular-input-masks
+//= require ng-file-upload
+//= require main.js
 //= require_tree .

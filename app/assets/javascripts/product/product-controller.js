@@ -6,10 +6,9 @@ angular.module('pockApp')
     self.product = product;
 
     self.save = function(){
-      if(!$scope.productForm.$error){
+      if(!$scope.productForm.$invalid){
         ProductService.save(self.product).
           then(function(){
-            console.log($scope);
             $location.path('product');
             Notification('Produto salvo com sucesso');
           },{});
