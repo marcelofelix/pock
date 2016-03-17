@@ -11,27 +11,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315020254) do
+ActiveRecord::Schema.define(version: 20160317020033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "products", force: :cascade do |t|
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
-    t.string   "name",                               null: false
-    t.integer  "count",                              null: false
-    t.string   "ean",                                null: false
-    t.decimal  "price",      precision: 5, scale: 2, null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.integer  "supplier_id",                         null: false
+    t.string   "name",                                null: false
+    t.integer  "count",                               null: false
+    t.string   "ean",                                 null: false
+    t.decimal  "cost",        precision: 8, scale: 2, null: false
+    t.decimal  "price",       precision: 8, scale: 2, null: false
   end
 
   add_index "products", ["ean"], name: "index_products_on_ean", using: :btree
+
+  create_table "purchase_items", force: :cascade do |t|
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.integer  "purchase_id",                         null: false
+    t.string   "name",                                null: false
+    t.integer  "count",                               null: false
+    t.string   "ean",                                 null: false
+    t.decimal  "price",       precision: 8, scale: 2, null: false
+  end
+
+  add_index "purchase_items", ["ean"], name: "index_purchase_items_on_ean", using: :btree
 
   create_table "purchases", force: :cascade do |t|
     t.integer  "supplier_id",                         null: false
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.decimal  "price",       precision: 5, scale: 2, null: false
+    t.string   "code",                                null: false
+    t.decimal  "total",       precision: 8, scale: 2, null: false
   end
 
   create_table "suppliers", force: :cascade do |t|
