@@ -44,12 +44,32 @@ angular
       }
     })
     .when('/purchase', {
-      templateUrl: 'buy/purchase-list.html',
+      templateUrl: 'purchase/purchase-list.html',
       controller: 'PurchaseListController',
       controllerAs: 'vm',
       resolve: {
         purchases: function(PurchaseService){
           return PurchaseService.list();
+        }
+      }
+    })
+    .when('/purchase/:id', {
+      templateUrl: 'purchase/purchase.html',
+      controller: 'PurchaseController',
+      controllerAs: 'vm',
+      resolve: {
+        purchase: function($route, PurchaseService){
+          return PurchaseService.get($route.current.params.id);
+        }
+      }
+    })
+    .when('/sell', {
+      templateUrl: 'sell/sell-list.html',
+      controller: 'SellListController',
+      controllerAs: 'vm',
+      resolve: {
+        purchase: function($route, PurchaseService){
+          return PurchaseService.get($route.current.params.id);
         }
       }
     });

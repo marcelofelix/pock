@@ -13,4 +13,9 @@ class PurchaseController < ApplicationController
     render nothing: true
   end
 
+  def show
+    purchase = Purchase.find(params[:id])
+    render json: purchase.to_json(include: [:supplier, :purchase_items])
+  end
+
 end

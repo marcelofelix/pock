@@ -10,6 +10,15 @@ angular.module('pockApp').
         }).then(function(response){
           return response.data;
         },{});
+      },
+
+      get: function(id){
+        return $http({
+          url: 'purchase/'+id,
+          method: 'GET'
+        }).then(function(response){
+          return response.data;
+        },{});
       }
     }
   });

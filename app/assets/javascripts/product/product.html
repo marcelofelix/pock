@@ -2,7 +2,7 @@
   <form name="productForm" ng-submit="vm.save()" novalidate>
     <md-input-container class="md-block">
       <label>Código do produto</label>
-      <input ng-model="vm.product.ean" name="ean" required md-no-asterisk>
+      <input ng-model="vm.product.ean" name="ean" required md-no-asterisk disabled>
       <div ng-messages="productForm.ean.$error">
         <div ng-message="required">Campo obrigatório</div>
       </div>

@@ -1,17 +1,17 @@
-<md-content>
+<md-content flex layout-padding>
   <md-card class="product_list">
     <md-list>
       <md-toolbar>
         <div class="md-toolbar-tools">
           <h2>
-            <span>Lista de pedidos</span>
+            Lista de pedidos
           </h2>
           <md-button type="file" ngf-select="vm.uploadFiles($file, $invalidFiles)" class="md-icon-button" aria-label="Favorite" accept="text/xml">
             <md-icon md-svg-icon="assets/images/new.svg" style="color: greenyellow;"></md-icon>
           </md-button>
         </div>
       </md-toolbar>
-      <md-list-item  ng-repeat="p in vm.purchases | filter:vm.query" ng-click="vm.edit(p)">
+      <md-list-item  ng-repeat="p in vm.purchases | filter:vm.query" ng-href="/#/purchase/{{p.id}}">
         <div flex>
           <strong><strong>Fornecedor: </strong>{{p.supplier.name}}</strong>
           <p class="product_name">{{p.name}}</p>
