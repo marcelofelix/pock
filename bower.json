@@ -22,6 +22,8 @@
     "angular-material": "^1.0.6",
     "angular-ui-notification": "^0.1.0",
     "angular-input-masks": "^2.1.1",
-    "ng-file-upload": "^12.0.4"
+    "ng-file-upload": "^12.0.4",
+    "lodash": "^4.6.1",
+    "moment": "^2.12.0"
   }
 }

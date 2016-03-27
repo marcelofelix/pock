@@ -8,5 +8,11 @@ angular.module('pockApp').
       $location.path('product/' + p.ean);
     };
 
+    self.search = function(query){
+      return _.filter(self.products, function(e){
+        return angular.lowercase(e.name).indexOf(angular.lowercase(query)) > -1;
+      });
+    };
+
     return self;
   });

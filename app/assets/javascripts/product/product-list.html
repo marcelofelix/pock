@@ -1,33 +1,19 @@
-<md-content >
-  <md-input-container class="md-block" flex-gt-sm>
-    <label>Filtro</label>
-    <input ng-model="vm.query">
-  </md-input-container>
-  <md-card class="product_list">
-    <md-list>
-      <md-toolbar>
-        <div class="md-toolbar-tools">
-          <h2>
-            <span>Lista de produtos</span>
-          </h2>
-          <md-button ng-href="/#/product/new" class="md-icon-button" aria-label="Favorite">
-            <md-icon md-svg-icon="assets/images/new.svg" style="color: greenyellow;"></md-icon>
-          </md-button>
-        </div>
-      </md-toolbar>
-      <md-list-item  ng-repeat="p in vm.products | filter:vm.query" ng-click="vm.edit(p)">
-        <div flex>
-          <strong><strong>Código de Barra: </strong>{{p.ean}}</strong>
-          <p class="product_name">{{p.name}}</p>
-          <section layout="row">
-            <span flex><strong>Custo: </strong>{{p.price | currency:"R$ "}}</span>
-            <span flex><strong>Preço: </strong>{{p.price | currency:"R$ "}}</span>
-            <span flex><strong>Quantidade: </strong>{{p.count}}</span>
-          </section>
-        </div>
-        <md-divider ng-if="!$last"></md-divider>
-      </md-list-item>
-    </md-list>
-  </md-card>
-</md-content>
+<div layout="column">
+  <md-autocomplete
+    md-selected-item="selectedItem"
+    md-search-text="vm.searchText"
+    md-items="p in vm.search(vm.searchText)"
+    md-min-length="3"
+    md-selected-item-change="vm.edit(p)"
+    md-item-text="p.name">
+    <span md-highlight-text="vm.searchText"
+      md-highlight-flags="^i">{{p.name}}</span>
+    <md-not-found>
+      Produto não encontrado
+    </md-not-found>
+  </md-autocomplete>
+  <section layout="row" layout-align="center center">
+    <md-button class="md-raised md-primary" ng-href="/#/product/new">Novo Produto</md-button>
+  </section>
+</div>
 

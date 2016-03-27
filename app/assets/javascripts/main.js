@@ -68,8 +68,21 @@ angular
       controller: 'SellListController',
       controllerAs: 'vm',
       resolve: {
-        purchase: function($route, PurchaseService){
-          return PurchaseService.get($route.current.params.id);
+        sells: function(SellService){
+          return SellService.list(moment().toDate());
+        }
+      }
+    })
+    .when('/sell/:id', {
+      templateUrl: 'sell/sell.html',
+      controller: 'SellController',
+      controllerAs: 'vm',
+      resolve: {
+        sell: function(SellService, $route){
+          return SellService.get($route.current.params.id);
+        },
+        products: function(ProductService){
+          return ProductService.list();
         }
       }
     });

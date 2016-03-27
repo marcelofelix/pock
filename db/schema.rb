@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160322033048) do
+ActiveRecord::Schema.define(version: 20160326164414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,27 +60,28 @@ ActiveRecord::Schema.define(version: 20160322033048) do
   create_table "sell_items", force: :cascade do |t|
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
-    t.decimal  "value",      precision: 9, scale: 2, null: false
-    t.decimal  "discount",   precision: 9, scale: 2, null: false
-    t.decimal  "change",     precision: 9, scale: 2, null: false
-    t.decimal  "payment",    precision: 9, scale: 2, null: false
     t.string   "status",                             null: false
+    t.string   "ean",                                null: false
+    t.integer  "count",                              null: false
+    t.integer  "product_id",                         null: false
+    t.decimal  "price",      precision: 9, scale: 2, null: false
+    t.decimal  "total",      precision: 9, scale: 2, null: false
+    t.string   "name",                               null: false
+    t.integer  "sell_id",                            null: false
+    t.integer  "discount"
   end
+
+  add_index "sell_items", ["ean"], name: "index_sell_items_on_ean", using: :btree
 
   create_table "sells", force: :cascade do |t|
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
-    t.string   "ean",                                null: false
-    t.decimal  "price",      precision: 8, scale: 2, null: false
-    t.decimal  "total",      precision: 8, scale: 2, null: false
-    t.integer  "count",                              null: false
-    t.string   "name",                               null: false
     t.decimal  "discount",   precision: 8, scale: 2
-    t.integer  "sell_id",                            null: false
-    t.integer  "product_id",                         null: false
+    t.decimal  "change",     precision: 9, scale: 2
+    t.decimal  "payment",    precision: 9, scale: 2
+    t.decimal  "total",      precision: 8, scale: 2
+    t.string   "status",                             null: false
   end
-
-  add_index "sells", ["ean"], name: "index_sells_on_ean", using: :btree
 
   create_table "suppliers", force: :cascade do |t|
     t.string   "name",       null: false
