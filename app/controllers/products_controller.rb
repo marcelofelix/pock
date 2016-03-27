@@ -5,7 +5,7 @@ class ProductsController < ActionController::Base
   end
 
   def show
-    product = Product.find(params[:id])
+    product = Product.find_by ean: params[:id]
     render json: product
   end
 

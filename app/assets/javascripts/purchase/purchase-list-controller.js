@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pockApp').
-  controller('PurchaseListController', function(purchases, Upload){
+  controller('PurchaseListController', function(purchases, Upload, $location){
     var self = this;
     self.purchases = purchases;
     self.uploadFiles = function(file, errFile){
@@ -15,6 +15,10 @@ angular.module('pockApp').
           console.log('ok');
         },{});
       }
+    };
+
+    self.show = function(purchase){
+      $location.path('/purchase/'+purchase.id);
     };
     return self;
   });

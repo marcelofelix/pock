@@ -1,27 +1,14 @@
 <md-content flex layout-padding>
-  <md-card class="product_list">
-    <md-list>
-      <md-toolbar>
-        <div class="md-toolbar-tools">
-          <h2>
-            Lista de pedidos
-          </h2>
-          <md-button type="file" ngf-select="vm.uploadFiles($file, $invalidFiles)" class="md-icon-button" aria-label="Favorite" accept="text/xml">
-            <md-icon md-svg-icon="assets/images/new.svg" style="color: greenyellow;"></md-icon>
-          </md-button>
-        </div>
-      </md-toolbar>
-      <md-list-item  ng-repeat="p in vm.purchases | filter:vm.query" ng-href="/#/purchase/{{p.id}}">
-        <div flex>
-          <strong><strong>Fornecedor: </strong>{{p.supplier.name}}</strong>
-          <p class="product_name">{{p.name}}</p>
-          <section layout="row">
-            <span flex><strong>Data: </strong>{{p.created_at | date}}</span>
-            <span flex><strong>Preço: </strong>{{p.price | currency:"R$ "}}</span>
-          </section>
-        </div>
-        <md-divider ng-if="!$last"></md-divider>
-      </md-list-item>
-    </md-list>
-  </md-card>
+  <ul>
+    <li ng-click="vm.show(p)" ng-repeat="p in vm.purchases">
+      <section layout="row" layout-align="space-between center">
+        <label>{{p.created_at | date}}</label>
+        <label>{{p.total | currency:"R$ "}}</label>
+      </section>
+      <md-divider ng-if="!$last"></md-divider>
+    </li>
+  </ul>
+  <footer class="page__footer" layout="row" layout-align="end center">
+      <md-button class="md-raised md-primary" ngf-select="vm.uploadFiles($file, $invalidFiles)">Importar</md-button>
+  </footer>
 </md-content>
