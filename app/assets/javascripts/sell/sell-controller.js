@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('pockApp').
-  controller('SellController', function(sell, products, SellService, $mdSidenav){
-    var menu = 'right';
+  controller('SellController', function(sell, products, SellService, $mdSidenav, $location){
+    var menu = 'item';
+    var payment = 'payment';
     var self = this;
     self.sell = sell;
     self.itens = sell.sell_items;
@@ -36,14 +37,25 @@ angular.module('pockApp').
       $mdSidenav(menu).toggle();
     };
 
+    self.openPayment = function(){
+      self.totalSell();
+      $mdSidenav(payment).toggle();
+    };
+
     self.closeItem = function(){
       $mdSidenav(menu).close();
     };
 
+    self.closePayment = function(){
+      $mdSidenav(payment).close();
+    };
+
     self.totalSell = function(){
-      return _.reduce(self.itens, function(sum, e){
+      var value = _.reduce(self.itens, function(sum, e){
         return sum + self.total(e);
       }, 0);
+      var discount = self.sell.discount ? value * self.sell.discount / 100 : 0;
+      return value - discount;
     };
 
     self.remove = function(item){
@@ -54,11 +66,29 @@ angular.module('pockApp').
         },{});
     };
 
+    self.charge = function(){
+      if(self.sell.payment > self.totalSell()){
+        return self.sell.payment - self.totalSell();
+      }else{
+        return 0;
+      }
+    };
+
     self.update = function(item){
       SellService.updateItem(self.sell.id, item).
         then(function(data){
           updateItem(data);
           self.closeItem();
+        },{});
+    };
+
+    self.close = function(){
+      var sell = _.clone(self.sell);
+      sell.status = 'close';
+      SellService.update(sell).
+        then(function(data){
+          sell.status = 'close';
+          $location.path('/sell');
         },{});
     };
 
@@ -69,5 +99,6 @@ angular.module('pockApp').
       }else{
         self.itens.push(data);
       }
-    }
+    };
+
   });

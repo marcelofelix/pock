@@ -12,7 +12,7 @@ angular.module('pockApp').
         });
 
         file.upload.then(function(response){
-          console.log('ok');
+          $location.path('/purchase');
         },{});
       }
     };

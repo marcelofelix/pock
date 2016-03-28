@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20160326164414) do
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.decimal  "discount",   precision: 8, scale: 2
-    t.decimal  "change",     precision: 9, scale: 2
+    t.decimal  "charge",     precision: 9, scale: 2
     t.decimal  "payment",    precision: 9, scale: 2
     t.decimal  "total",      precision: 8, scale: 2
     t.string   "status",                             null: false

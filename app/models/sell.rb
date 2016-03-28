@@ -20,7 +20,14 @@ class Sell < ActiveRecord::Base
   private
 
   def calc_total
-    self.total = sell_items.reduce(0){|sum, n| sum + n.total}
+    value = sell_items.reduce(0){|sum, n| sum + n.total}
+    if not discount.nil?
+      value = value - (value * discount / 100)
+    end
+    self.total = value
+    if not self.payment.nil? and self.payment > self.total
+      self.charge = self.payment - self.total
+    end
   end
 
 end

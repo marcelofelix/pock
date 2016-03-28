@@ -38,7 +38,6 @@ class SellController < ApplicationController
       sell.save
     end
     render json: item
-
   end
 
   def remove_item
@@ -46,6 +45,16 @@ class SellController < ApplicationController
     sell_item.delete
     sell_item.sell.save
     render nothing: true
+  end
+
+  def update
+    sell = Sell.find params[:id]
+    update = params[:sell]
+    sell.payment = update[:payment]
+    sell.discount = update[:discount]
+    sell.status = update[:status]
+    sell.save
+    render json: sell
   end
 
   private

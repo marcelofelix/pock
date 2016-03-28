@@ -1,6 +1,7 @@
 .list {
   padding-bottom: 40px;
 }
+
 .list__item {
   padding: 10px 3px 2px 3px;
   font-size: em(14px, 16px);
@@ -10,6 +11,10 @@
     position: absolute;
     right: 0;
   }
+}
+
+.open {
+  color: blue;
 }
 
 .page__footer {

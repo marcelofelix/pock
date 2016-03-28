@@ -62,6 +62,18 @@ angular.module('pockApp').
           url: 'sell/item/' + id,
           method: 'DELETE'
         });
+      },
+
+      update: function(sell){
+        return $http({
+          url: 'sell/'+sell.id,
+          method: 'PUT',
+          data: {
+            sell: sell
+          }
+        }).then(function(response){
+          return response.data;
+        },{});
       }
     }
   });

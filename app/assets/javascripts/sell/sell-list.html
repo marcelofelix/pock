@@ -4,13 +4,13 @@
     <md-button class="md-raised md-primary" ng-click="vm.newSell()">Nova venda</md-button>
   </div>
   <section ng-click="vm.edit(s.id)" ng-repeat="s in vm.sells">
-    <div layout="row" layout-align="space-between center" class="list__item">
-      <small>
+    <div layout="row" layout-align="space-between center" class="list__item" ng-class="{open: s.status === 'open'}">
+      <label>
         {{s.updated_at | date:'hh:mm'}}
-      </small>
-      <small>
+      </label>
+      <label>
         {{s.total | currency:'R$ '}}
-      </small>
+      </label>
     </div>
     <md-divider ng-if="!$last"></md-divider>
   </section>
