@@ -1,0 +1,25 @@
+{
+  "name": "pock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcelofelix/pock.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcelofelix/pock/issues"
+  },
+  "homepage": "https://github.com/marcelofelix/pock#readme",
+  "dependencies": {
+    "bower": "^1.7.7"
+  }
+}
