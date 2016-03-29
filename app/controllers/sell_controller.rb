@@ -1,5 +1,4 @@
 class SellController < ApplicationController
-  skip_before_action :verify_authenticity_token
 
   def index
     date = Time.zone.parse(params[:date])
@@ -54,6 +53,18 @@ class SellController < ApplicationController
     sell.discount = update[:discount]
     sell.status = update[:status]
     sell.save
+    if sell.close?
+      sell.sell_items.each do |i|
+        product = Product.find i.product_id
+        movement = Movement.new
+        movement.product = product
+        movement.count = i.count
+        movement.type = :V
+        movement.save
+        product.count -= i.count
+        product.save
+      end
+    end
     render json: sell
   end
 

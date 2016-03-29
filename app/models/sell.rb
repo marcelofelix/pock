@@ -17,6 +17,9 @@ class Sell < ActiveRecord::Base
     item
   end
 
+  def close?
+    return status == 'close'
+  end
   private
 
   def calc_total

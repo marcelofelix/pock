@@ -97,7 +97,7 @@ angular.module('pockApp').
       if(item){
         _.assign(item, data);
       }else{
-        self.itens.push(data);
+        self.itens.unshift(data);
       }
     };
 
