@@ -11,8 +11,11 @@ angular.module('pockApp').
       SellService.list(self.date).
         then(function(data){
           self.sells = data;
-          self.total = _.reduce(data, function(sum, n){return sum + n.total});
         },{});
+    };
+
+    self.total = function(){
+      return _.reduce(self.sells, function(sum, n){return sum + n.total}, 0);
     };
 
     self.edit = function(id){

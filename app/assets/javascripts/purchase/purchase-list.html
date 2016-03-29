@@ -1,6 +1,6 @@
 <md-content flex layout-padding>
   <ul>
-    <li ng-click="vm.show(p)" ng-repeat="p in vm.purchases">
+    <li ng-click="vm.show(p)" ng-repeat="p in vm.purchases" class="list__item">
       <section layout="row" layout-align="space-between center">
         <label>{{p.created_at | date}}</label>
         <label>{{p.total | currency:"R$ "}}</label>

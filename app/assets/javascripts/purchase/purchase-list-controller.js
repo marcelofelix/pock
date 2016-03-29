@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pockApp').
-  controller('PurchaseListController', function(purchases, Upload, $location){
+  controller('PurchaseListController', function(purchases, Upload, $location, PurchaseService){
     var self = this;
     self.purchases = purchases;
     self.uploadFiles = function(file, errFile){
@@ -11,9 +11,11 @@ angular.module('pockApp').
           data: {file: file}
         });
 
-        file.upload.then(function(response){
-          $location.path('/purchase');
-        },{});
+        file.upload.
+          then(PurchaseService.list().
+              then(function(data){
+                self.purchases = data;
+              }));
       }
     };
 

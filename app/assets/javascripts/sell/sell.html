@@ -58,16 +58,16 @@
         <label>Desconto</label>
         <input type="number" ng-model="vm.item.discount">
       </md-input-container>
-      <section layout="row" layout-align="space-between center">
-        <md-button class="md-icon-button" aria-label="Voltar" ng-click="vm.closeItem()">
-          <md-icon md-svg-icon="/assets/images/back.svg"></md-icon>
-        </md-button>
-        <md-button class="md-icon-button" aria-label="Cancelar" ng-click="vm.remove(vm.item)">
-          <md-icon md-svg-icon="/assets/images/cancel.svg"></md-icon>
-        </md-button>
-        <md-button class="md-primary" aria-label="Salvar" ng-click="vm.update(vm.item)">Salvar</md-button>
-      </section>
     </md-content>
+    <section layout="row" layout-align="space-between center" class="context__action">
+      <md-button class="md-icon-button" aria-label="Voltar" ng-click="vm.closeItem()">
+        <md-icon md-svg-icon="/assets/images/back.svg"></md-icon>
+      </md-button>
+      <md-button class="md-icon-button" aria-label="Cancelar" ng-click="vm.remove(vm.item)">
+        <md-icon md-svg-icon="/assets/images/cancel.svg"></md-icon>
+      </md-button>
+      <md-button class="md-primary" aria-label="Salvar" ng-click="vm.update(vm.item)">Salvar</md-button>
+    </section>
   </md-sidenav>
   <md-sidenav class="md-sidenav-right" md-component-id="payment">
     <md-content layout="column" layout-padding>
@@ -87,12 +87,13 @@
           <label>Troco: {{vm.charge() | currency:'R$ '}}</label>
         </h1>
       </md-input-container>
-      <section layout="row" layout-align="space-between center">
-        <md-button class="md-icon-button" aria-label="Voltar" ng-click="vm.closePayment()">
-          <md-icon md-svg-icon="/assets/images/back.svg"></md-icon>
-        </md-button>
-        <md-button class="md-primary" aria-label="Salvar" ng-click="vm.close()">Concluir</md-button>
-      </section>
+
     </md-content>
+    <section layout="row" layout-align="space-between center" class="context__action">
+      <md-button class="md-icon-button" aria-label="Voltar" ng-click="vm.closePayment()">
+        <md-icon md-svg-icon="/assets/images/back.svg"></md-icon>
+      </md-button>
+      <md-button class="md-primary" aria-label="Salvar" ng-click="vm.close()">Concluir</md-button>
+    </section>
   </md-sidenav>
 </div>

@@ -1,7 +1,6 @@
 <div layout="column">
   <div layout="row" layout-align="space-between center">
     <md-datepicker ng-change="vm.list()" ng-model="vm.date" md-placeholder="Dis de venda"></md-datepicker>
-    <md-button class="md-raised md-primary" ng-click="vm.newSell()">Nova venda</md-button>
   </div>
   <section ng-click="vm.edit(s.id)" ng-repeat="s in vm.sells">
     <div layout="row" layout-align="space-between center" class="list__item" ng-class="{open: s.status === 'open'}">
@@ -17,8 +16,9 @@
   <footer class="page__footer">
     <md-divider></md-divider>
     <div layout="row" layout-align="space-between center">
-      <small>Total</small>
-      <small>{{vm.total | currency:'R$ '}}</small>
+      <label>Total</label>
+      <label>{{vm.total() | currency:'R$ '}}</label>
+      <md-button class="md-raised md-primary" ng-click="vm.newSell()">Nova venda</md-button>
     </div>
   </footer>
 </div>
