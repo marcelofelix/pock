@@ -1,0 +1,21 @@
+<div layout="column">
+  <md-autocomplete
+    md-selected-item="selectedItem"
+    md-search-text="vm.searchText"
+    md-items="p in vm.search(vm.searchText)"
+    md-min-length="3"
+    md-selected-item-change="vm.edit(p)"
+    md-item-text="p.name">
+    <span md-highlight-text="vm.searchText"
+      md-highlight-flags="^i">{{p.name}}</span>
+    <md-not-found>
+      Produto não encontrado
+    </md-not-found>
+  </md-autocomplete>
+  <footer class="page__footer">
+    <section layout="row" layout-align="end center">
+      <md-button class="md-raised md-primary" ng-href="/#/product/new">Novo Produto</md-button>
+    </section>
+  </footer>
+</div>
+
