@@ -24,3 +24,8 @@ test:
 
 production:
   <<: *default
+  database: dafbmktmqtp11e
+  host: ec2-54-235-246-67.compute-1.amazonaws.com
+  pool: 5
+  username: <%= ENV['USER_DB'] %>
+  password: <%= ENV['PASSWORD_DB'] %>
