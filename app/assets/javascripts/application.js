@@ -12,7 +12,7 @@
 //
 // Bower packages
 //= require moment
-//= require lodash
+//= require lodash/dist/lodash.js
 //= require angular
 //= require angular-rails-templates
 //= require angular-route
