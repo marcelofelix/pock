@@ -10,8 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require lodash
 //= require moment
+//= require lodash
 //= require angular
 //= require angular-rails-templates
 //= require angular-route
