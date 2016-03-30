@@ -5,7 +5,6 @@ angular.module('pockApp').
     return {
       request: function(config){
         $rootScope.loading = true;
-        console.log(true);
         return config;
       },
 
