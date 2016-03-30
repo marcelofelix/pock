@@ -8,7 +8,8 @@ angular
     'ui.utils.masks',
     'ngFileUpload',
     'templates'
-  ]).config(function($routeProvider){
+  ]).config(function($routeProvider, $httpProvider){
+    $httpProvider.interceptors.push('httpLoading')
     $routeProvider
     .when('/', {
       templateUrl: 'home/home.html'

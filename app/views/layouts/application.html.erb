@@ -10,6 +10,10 @@
 
 
   <body ng-app="pockApp">
+    <div class="loading" layout-align="center center" ng-show="loading">
+      <md-progress-circular class="spinner" md-mode="indeterminate" md-diameter="200"></md-progress-circular>
+      {{loading}}
+    </div>
     <div>
       <md-toolbar md-open="demo.isOpen" count="demo.count" md-direction="{{demo.selectedDirection}}">
         <md-toolbar>
