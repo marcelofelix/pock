@@ -23,12 +23,12 @@
     </md-input-container>
     <md-input-container class="md-block">
       <label>Preço</label>
-      <input ui-money-mask ng-model="vm.product.price" name="price" required md-no-asterisk>
+      <input ui-number-mask="2" type="tel" autocomplete="false" pattern="\d*" currency step="0.01" ng-model="vm.product.price" name="price" required>
       <div ng-messages="productForm.price.$error">
         <div ng-message="required">Campo obrigatório</div>
       </div>
     </md-input-container>
-    <div layout="row" layout-align="end" >
+    <div layout="row" layout-align="end" class="page__footer">
       <md-button class="md-raised md-warn" ng-href="#/product">Cancelar</md-button>
       <md-button type="submit" class="md-raised md-primary" >Salvar</md-button>
     </div>

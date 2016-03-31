@@ -2,10 +2,15 @@
   padding-bottom: 40px;
 }
 
+.header {
+  padding: 10px;
+}
+
 .list__item {
   padding: 10px 3px 2px 3px;
   font-size: em(14px, 16px);
   position: relative;
+  font-weight: bold;
 
   .menu {
     position: absolute;
@@ -14,7 +19,8 @@
 }
 
 .open {
-  color: blue;
+  color: #FF5A14;
+  font-weight: bold;
 }
 
 .page__footer {
@@ -23,7 +29,7 @@
   padding: 15px 3px 10px 3px;
   bottom: 0px;
   left: 0px;
-  background: white;
+  background: #424242;
 }
 
 .context__action {
