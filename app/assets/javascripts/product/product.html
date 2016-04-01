@@ -23,7 +23,7 @@
     </md-input-container>
     <md-input-container class="md-block">
       <label>Preço</label>
-      <input ui-number-mask="2" type="tel" autocomplete="false" pattern="\d*" currency step="0.01" ng-model="vm.product.price" name="price" required>
+      <input ui-number-mask="2" type="tel" autocomplete="false" currency step="0.01" ng-model="vm.product.price" name="price" required>
       <div ng-messages="productForm.price.$error">
         <div ng-message="required">Campo obrigatório</div>
       </div>

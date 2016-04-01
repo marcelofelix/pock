@@ -1,16 +1,22 @@
 .list {
   padding-bottom: 40px;
+  font-size: em(14px, 16px);
+}
+
+.product-link {
+  font-size: em(14px, 16px);
 }
 
 .header {
   padding: 10px;
+  word-break: break-all;
+  font-size: em(13px, 16px);
 }
 
 .list__item {
   padding: 10px 3px 2px 3px;
-  font-size: em(14px, 16px);
+  font-size: em(16px, 16px);
   position: relative;
-  font-weight: bold;
 
   .menu {
     position: absolute;
@@ -19,7 +25,7 @@
 }
 
 .open {
-  color: #FF5A14;
+  color: #FF3F4A;
   font-weight: bold;
 }
 
@@ -29,7 +35,7 @@
   padding: 15px 3px 10px 3px;
   bottom: 0px;
   left: 0px;
-  background: #424242;
+  background: white;
 }
 
 .context__action {

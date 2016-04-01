@@ -7,6 +7,7 @@ angular.module('pockApp').
     var self = this;
     self.sell = sell;
     self.itens = sell.sell_items;
+    self.date = moment(sell.created_at).toDate();
     self.products = products;
 
     self.search = function(query){
@@ -90,6 +91,11 @@ angular.module('pockApp').
           sell.status = 'close';
           $location.path('/sell');
         },{});
+    };
+
+    self.update = function(){
+      self.sell.created_at = self.date;
+      SellService.update(self.sell);
     };
 
     function updateItem(data){

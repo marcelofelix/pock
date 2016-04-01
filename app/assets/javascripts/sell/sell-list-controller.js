@@ -15,7 +15,6 @@ angular.module('pockApp').
     };
 
     self.total = function(){
-      console.log('total');
       return _.reduce(self.sells, function(sum, n){return sum + n.total}, 0);
     };
 

@@ -49,11 +49,13 @@ class SellController < ApplicationController
   def update
     sell = Sell.find params[:id]
     update = params[:sell]
+    can_close = sell.status != :close
     sell.payment = update[:payment]
     sell.discount = update[:discount]
     sell.status = update[:status]
+    sell.created_at = update[:created_at]
     sell.save
-    if sell.close?
+    if can_close and sell.close?
       sell.sell_items.each do |i|
         product = Product.find i.product_id
         movement = Movement.new

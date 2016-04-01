@@ -35,7 +35,7 @@
   <footer class="page__footer">
     <md-divider></md-divider>
     <md-content layout="row" layout-align="space-between center">
-      <small>Total</small>
+      <md-datepicker ng-change="vm.update()" ng-model="vm.date"></md-datepicker>
       <small>{{vm.totalSell() | currency:'R$ '}}</small>
       <md-button class="md-icon-button" aria-label="Pagamento" ng-click="vm.openPayment()">
         <md-icon md-svg-icon="/assets/images/payment.svg"></md-icon>
@@ -50,14 +50,16 @@
       </h1>
     </md-toolbar>
     <md-content layout="column" layout-padding>
-      <p>{{vm.item.name}}</p>
+      <header class="product-link">
+        <a href="/#/product/{{vm.item.ean}}">{{vm.item.name}}</a>
+      </header>
       <md-input-container>
         <label>Quantidade</label>
         <input type="number" ng-model="vm.item.count">
       </md-input-container>
       <md-input-container>
         <label>Preço</label>
-        <input ui-number-mask="2" type="tel" autocomplete="false" pattern="\d*" currency step="0.01" ng-model="vm.item.price" name="price" required>
+        <input ui-number-mask="2" type="tel" autocomplete="false" currency step="0.01" ng-model="vm.item.price" name="price" required>
       </md-input-container>
       <md-input-container>
         <label>Desconto</label>
@@ -81,7 +83,7 @@
       </h1>
       <md-input-container>
         <label>Pagamento</label>
-        <input ui-number-mask="2" type="tel" autocomplete="false" pattern="\d*" currency step="0.01" ng-model="vm.sell.payment" name="price" required>
+        <input ui-number-mask="2" type="tel" autocomplete="false" currency step="0.01" ng-model="vm.sell.payment" name="price" required>
       </md-input-container>
       <md-input-container>
         <label>Desconto</label>

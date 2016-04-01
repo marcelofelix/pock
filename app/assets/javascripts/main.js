@@ -9,7 +9,6 @@ angular
     'ngFileUpload',
     'templates'
   ]).config(function($routeProvider, $httpProvider, $mdThemingProvider){
-    $mdThemingProvider.theme('default').dark();
     $httpProvider.interceptors.push('httpLoading')
     $routeProvider
     .when('/', {
