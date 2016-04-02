@@ -75,7 +75,7 @@ angular.module('pockApp').
       }
     };
 
-    self.update = function(item){
+    self.updateItem = function(item){
       SellService.updateItem(self.sell.id, item).
         then(function(data){
           updateItem(data);
