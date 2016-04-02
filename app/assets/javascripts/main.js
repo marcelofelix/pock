@@ -70,7 +70,7 @@ angular
       controllerAs: 'vm',
       resolve: {
         sells: function(SellService){
-          return SellService.list(moment().toDate());
+          return SellService.list(moment().startOf('month').toDate(), moment().endOf('month').toDate());
         }
       }
     })

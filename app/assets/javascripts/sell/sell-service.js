@@ -3,12 +3,13 @@
 angular.module('pockApp').
   factory('SellService', function($http){
     return {
-      list: function(date){
+      list: function(start, end){
         return $http({
           url: 'sell',
           method: 'GET',
           params: {
-            date: date
+            start: start,
+            end: end
           }
         }).then(function(response){
           return response.data;

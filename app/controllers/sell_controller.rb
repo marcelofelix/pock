@@ -1,8 +1,9 @@
 class SellController < ApplicationController
 
   def index
-    date = Time.parse(params[:date])
-    render json: Sell.where(created_at: (date.beginning_of_day..date.end_of_day)).order(updated_at: :desc)
+    startDate = Time.parse(params[:start])
+    endDate = Time.parse(params[:end])
+    render json: Sell.where(created_at: (startDate..endDate)).order(updated_at: :desc)
   end
 
   def create

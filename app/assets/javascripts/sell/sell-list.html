@@ -1,11 +1,12 @@
 <div layout="column">
   <header layout="row" layout-align="space-between center">
-    <md-datepicker ng-change="vm.list()" ng-model="vm.date" md-placeholder="Dis de venda"></md-datepicker>
+    <md-datepicker ng-change="vm.list()" ng-model="vm.startDate"></md-datepicker>
+    <md-datepicker ng-change="vm.list()" ng-model="vm.endDate"></md-datepicker>
   </header>
   <section ng-click="vm.edit(s.id)" ng-repeat="s in vm.sells">
     <md-content layout="row" layout-align="space-between center" class="list__item" ng-class="{open: s.status === 'open'}">
       <label>
-        {{s.updated_at | date:'hh:mm'}}
+        {{s.updated_at | date:'dd/MM hh:mm'}}
       </label>
       <label>
         {{s.total | currency:'R$ '}}
