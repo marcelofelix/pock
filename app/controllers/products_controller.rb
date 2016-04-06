@@ -11,6 +11,7 @@ class ProductsController < ActionController::Base
 
   def create
     product = Product.new(product_param)
+    product.supplier = supplier
     product.save
     movement product, 0
     render json: product
@@ -18,6 +19,7 @@ class ProductsController < ActionController::Base
 
   def update
     product = Product.find(params[:id])
+    product.supplier = supplier
     old_value = product.count
     product.update!(product_param)
     new_value = product.count
@@ -28,7 +30,11 @@ class ProductsController < ActionController::Base
   private
 
   def product_param
-    params.require(:product).permit(:name, :price, :count, :ean)
+    params.require(:product).permit(:name, :cost, :price, :count, :ean, :supplier_id)
+  end
+
+  def supplier
+    Supplier.find(product_param[:supplier_id])
   end
 
   def movement product, old_value

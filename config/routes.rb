@@ -58,6 +58,7 @@ Rails.application.routes.draw do
   root to: 'application#angular'
   resources :products
   resources :purchase
+  resources :supplier
   resources :sell
   match 'sell/:id/item', to: 'sell#add', via: :post
   match 'sell/item/:id', to: 'sell#remove_item', via: :delete
