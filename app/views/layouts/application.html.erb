@@ -9,27 +9,26 @@
   </head>
 
 
-  <body ng-app="pockApp">
+  <body ng-app="pockApp" ng-controller="HomeController as home">
     <div class="loading" layout-align="center center" ng-show="loading">
       <md-progress-circular class="spinner" md-mode="indeterminate" md-diameter="200"></md-progress-circular>
       {{loading}}
     </div>
     <div>
-      <md-toolbar md-open="demo.isOpen" count="demo.count" md-direction="{{demo.selectedDirection}}">
-        <md-toolbar>
-          <md-fab-actions class="md-toolbar-tools">
-            <md-button aria-label="Produtos" class="md-icon-button" ng-href="/#/product">
-              <md-icon md-svg-src="/assets/images/product.svg"></md-icon>
-            </md-button>
-            <md-button aria-label="Notas" class="md-icon-button" ng-href="/#/purchase">
-              <md-icon md-svg-src="/assets/images/buy.svg"></md-icon>
-            </md-button>
-            <md-button aria-label="Vendas" class="md-icon-button" ng-href="/#/sell">
-              <md-icon md-svg-src="/assets/images/sell.svg"></md-icon>
-            </md-button>
-          </md-fab-actions>
-        </md-toolbar>
-      </md-toolbar>
+      <section layout="row" class="menu" layout-align="space-between center">
+        <section layout="row">
+          <md-button aria-label="Produtos" class="md-icon-button" ng-href="/#/product">
+            <md-icon md-svg-src="/assets/images/product.svg"></md-icon>
+          </md-button>
+          <md-button aria-label="Notas" class="md-icon-button" ng-href="/#/purchase">
+            <md-icon md-svg-src="/assets/images/buy.svg"></md-icon>
+          </md-button>
+          <md-button aria-label="Vendas" class="md-icon-button" ng-href="/#/sell">
+            <md-icon md-svg-src="/assets/images/sell.svg"></md-icon>
+          </md-button>
+        </section>
+        <label class="action">{{home.menu.action}}</label>
+      </section>
     </div>
     <div class="home__content">
       <div ng-view=""></div>

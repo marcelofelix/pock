@@ -3,7 +3,7 @@ class SellController < ApplicationController
   def index
     startDate = Time.parse(params[:start])
     endDate = Time.parse(params[:end])
-    render json: Sell.where(created_at: (startDate..endDate)).order(updated_at: :desc)
+    render json: Sell.where(created_at: (startDate..endDate)).order(created_at: :desc)
   end
 
   def create
@@ -69,6 +69,11 @@ class SellController < ApplicationController
       end
     end
     render json: sell
+  end
+
+  def destroy
+    Sell.delete params[:id]
+    render nothing: true
   end
 
   private

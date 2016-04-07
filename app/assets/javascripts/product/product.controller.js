@@ -5,7 +5,8 @@
   angular.module('pockApp')
     .controller('ProductController', ProductController );
 
-  function ProductController($scope, product, $location, ProductService, Notification){
+  function ProductController($scope, product, $location, ProductService, Notification, Menu){
+    Menu.action = 'Novo produto';
     var self = this;
     self.product = product;
     self.save = save;

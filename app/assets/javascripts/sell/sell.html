@@ -36,6 +36,9 @@
     <md-divider></md-divider>
     <md-content layout="row" layout-align="space-between center">
       <md-datepicker ng-change="vm.update()" ng-model="vm.date"></md-datepicker>
+      <md-button class="md-icon-button" aria-label="Pagamento" ng-click="vm.cancel()">
+        <md-icon md-svg-icon="/assets/images/cancel.svg"></md-icon>
+      </md-button>
       <small>{{vm.totalSell() | currency:'R$ '}}</small>
       <md-button class="md-icon-button" aria-label="Pagamento" ng-click="vm.openPayment()">
         <md-icon md-svg-icon="/assets/images/payment.svg"></md-icon>
