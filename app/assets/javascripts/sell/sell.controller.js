@@ -62,6 +62,20 @@
       $mdSidenav(menu).toggle();
     };
 
+    function updateItem(item){
+      SellService.updateItem(self.sell.id, item).
+        then(function(data){
+          var item = _.find(self.itens, {product_id: data.product_id});
+          if(item){
+            _.assign(item, data);
+          }else{
+            self.itens.unshift(data);
+          }
+          self.closeItem();
+        },{});
+    };
+
+
     function openPayment(){
       self.totalSell();
       $mdSidenav(payment).toggle();
@@ -99,13 +113,6 @@
       }
     };
 
-    function updateItem(item){
-      SellService.updateItem(self.sell.id, item).
-        then(function(data){
-          updateItem(data);
-          self.closeItem();
-        },{});
-    };
 
     function close(){
       var sell = _.clone(self.sell);
@@ -122,14 +129,6 @@
       SellService.update(self.sell);
     };
 
-    function updateItem(data){
-      var item = _.find(self.itens, {product_id: data.product_id});
-      if(item){
-        _.assign(item, data);
-      }else{
-        self.itens.unshift(data);
-      }
-    };
 
   };
 })();
