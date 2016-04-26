@@ -50,9 +50,9 @@ gulp.task('bower', () => {
     .pipe(livereload())
 })
 
-gulp.task('dev', ['sass', 'js', 'html'], () => {
+gulp.task('dev', ['sass', 'js', 'html', 'images', 'bower'], () => {
   livereload.listen();
-  gulp.watch(src.all,['sass', 'js', 'html', 'images'])
+  gulp.watch(src.all,['sass', 'js', 'html', 'images', 'bower'])
 })
 
 
