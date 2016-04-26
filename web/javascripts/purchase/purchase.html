@@ -1,0 +1,32 @@
+<md-content flex layout-padding>
+  <md-list>
+    <md-subheader layout="column" class="md-no-sticky">
+      <div>
+        {{vm.purchase.supplier.name}}
+      </div>
+      <div layout="row" flex="100" layout-align="space-between">
+        <label>
+          {{vm.purchase.created_at | date:'dd/MM/yy'}}
+        </label>
+        <label>
+          {{vm.purchase.updated_at | date:'dd/MM/yy'}}
+        </label>
+      </div>
+      <div layout="row" flex="100" layout-align="end">
+        <label>
+          {{vm.purchase.total | currency:'R$ '}}
+        </label>
+      </div>
+    </md-subheader>
+    <div flex="100" layout="column" class="list__item" ng-repeat="i in vm.purchase.purchase_items">
+      <label>{{i.ean}}</label>
+      <label>{{i.name}}</label>
+      <div layout="row" layout-align="space-between">
+        <label>{{i.count}}</label>
+        <label>{{i.price | currency:'R$ '}}</label>
+        <label>{{i.price * i.count | currency:'R$ '}}</label>
+      </div>
+      <md-divider ng-if="!$last"></md-divider>
+    </div>
+  </md-list>
+</md-content>

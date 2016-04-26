@@ -10,7 +10,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'rails_12factor', group: :production
-gem 'angular-rails-templates', '~> 1.0'
 gem 'pg', '~> 0.18.4'
 
 group :development, :test do

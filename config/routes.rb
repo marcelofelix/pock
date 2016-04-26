@@ -55,7 +55,6 @@ Rails.application.routes.draw do
   #   end
 
 
-  root to: 'application#angular'
   resources :products
   resources :purchase
   resources :supplier
