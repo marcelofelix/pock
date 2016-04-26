@@ -14,8 +14,7 @@ gem 'angular-rails-templates', '~> 1.0'
 gem 'pg', '~> 0.18.4'
 
 group :development, :test do
-  gem 'byebug'
-  gem 'pry', '~> 0.10.3'
+  gem 'pry-byebug'
   gem 'rspec-rails'
 end
 

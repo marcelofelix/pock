@@ -44,7 +44,7 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
-    byebug (8.2.2)
+    byebug (8.2.4)
     coderay (1.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -113,6 +113,9 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (3.3.0)
+      byebug (~> 8.0)
+      pry (~> 0.10)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -209,14 +212,13 @@ PLATFORMS
 
 DEPENDENCIES
   angular-rails-templates (~> 1.0)
-  byebug
   coffee-rails (~> 4.1.0)
   figaro (~> 1.1, >= 1.1.1)
   guard
   guard-livereload (~> 2.5)
   jbuilder (~> 2.0)
   pg (~> 0.18.4)
-  pry (~> 0.10.3)
+  pry-byebug
   rails (= 4.2.6)
   rails_12factor
   rspec-rails
