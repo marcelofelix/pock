@@ -2,6 +2,8 @@ var gulp = require('gulp')
 var sass = require('gulp-ruby-sass')
 var bower = require('main-bower-files')
 var livereload = require('gulp-livereload');
+var babel = require("gulp-babel");
+var clean = require('gulp-clean');
 
 
 var src = {
@@ -14,14 +16,9 @@ var src = {
   base: {base: './web'}
 }
 
-var log = (err) => {
-  console.log('bosta');
-  console.log(err)
-}
 
 gulp.task('sass', () => {
   return sass(src.scss, {style: 'expanded'})
-    .on('error', log)
     .pipe(gulp.dest(src.dist))
     .pipe(livereload())
 });
@@ -35,6 +32,7 @@ gulp.task('images', () => {
 gulp.task('js', () => {
   return gulp.src(src.js, src.base)
     .pipe(gulp.dest(src.dist))
+    .pipe(babel())
     .pipe(livereload())
 })
 
@@ -55,41 +53,7 @@ gulp.task('dev', ['sass', 'js', 'html', 'images', 'bower'], () => {
   gulp.watch(src.all,['sass', 'js', 'html', 'images', 'bower'])
 })
 
-
-// gulp.task('vendor', function() {
-//   gulp.src('dist/lib/**/*.js')
-//   .pipe(vendor('vendor.js'))
-//   .pipe(rename({extname:".min.js"}))
-//   .pipe(gulp.dest('dist/'));
-// });
-
-// gulp.task('bower', function(){
-//     bower()
-//       .pipe(gulp.dest('dist/lib'));
-// });
-
-// gulp.task('clean', function(){
-//   gulp.src(['dist'])
-//     .pipe(clean());
-// });
-
-// gulp.task('template', function(){
-
-//   gulp.src(src.html)
-//     .pipe(template())
-//     .pipe(gulp.dest(src.template));
-// });
-
-// gulp.task('js', ['clean', 'template'], function(){
-//   gulp.src(src.js)
-//     .pipe(ngmin())
-//     .pipe(concat('pock.js'))
-//     .pipe(gulp.dest(src.dist))
-//     .pipe(uglify())
-//     .pipe(rename({extname:".min.js"}))
-//     .pipe(gulp.dest(src.dist))
-// });
-
-// gulp.task('default', function(){
-//   gulp.start('js');
-// });
+gulp.task('build', () => {
+  gulp.src(src.dist)
+    .pipe(clean());
+});

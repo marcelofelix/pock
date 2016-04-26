@@ -1,7 +1,7 @@
 class PurchaseController < ApplicationController
 
   def index
-    render json: Purchase.all
+    render json: Purchase.order('created_at DESC').all
   end
 
   def import
