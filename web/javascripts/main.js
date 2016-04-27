@@ -18,7 +18,7 @@ angular
       controller: 'ProductListController',
       controllerAs: 'vm',
       resolve: {
-        products: function(ProductService){
+        products: (ProductService) => {
           return ProductService.list();
         }
       }

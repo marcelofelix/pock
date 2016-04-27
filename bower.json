@@ -26,6 +26,11 @@
     "lodash": "^4.6.1",
     "moment": "^2.12.0"
   },
+  "overrides": {
+    "lodash": {
+      "main": "./dist/lodash.js"
+    }
+  },
   "resolutions": {
     "angular": "^1.5.0"
   }
