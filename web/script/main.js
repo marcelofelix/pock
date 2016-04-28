@@ -11,10 +11,10 @@ angular
     $httpProvider.interceptors.push('httpLoading')
     $routeProvider
     // .when('/', {
-    //   templateUrl: 'javascripts/home/home.html'
+    //   templateUrl: 'script/home/home.html'
     // })
     .when('/product', {
-      templateUrl: 'javascripts/product/product-list.html',
+      templateUrl: 'script/product/product-list.html',
       controller: 'ProductListController',
       controllerAs: 'vm',
       resolve: {
@@ -24,7 +24,7 @@ angular
       }
     })
     .when('/product/new', {
-      templateUrl: 'javascripts/product/product.html',
+      templateUrl: 'script/product/product.html',
       controller: 'ProductController',
       controllerAs: 'vm',
       resolve: {
@@ -34,7 +34,7 @@ angular
       }
     })
     .when('/product/:code', {
-      templateUrl: 'javascripts/product/product.html',
+      templateUrl: 'script/product/product.html',
       controller: 'ProductController',
       controllerAs: 'vm',
       resolve: {
@@ -44,7 +44,7 @@ angular
       }
     })
     .when('/purchase', {
-      templateUrl: 'javascripts/purchase/purchase-list.html',
+      templateUrl: 'script/purchase/purchase-list.html',
       controller: 'PurchaseListController',
       controllerAs: 'vm',
       resolve: {
@@ -54,7 +54,7 @@ angular
       }
     })
     .when('/purchase/:id', {
-      templateUrl: 'javascripts/purchase/purchase.html',
+      templateUrl: 'script/purchase/purchase.html',
       controller: 'PurchaseController',
       controllerAs: 'vm',
       resolve: {
@@ -64,7 +64,7 @@ angular
       }
     })
     .when('/sell', {
-      templateUrl: 'javascripts/sell/sell-list.html',
+      templateUrl: 'script/sell/sell-list.html',
       controller: 'SellListController',
       controllerAs: 'vm',
       resolve: {
@@ -74,7 +74,7 @@ angular
       }
     })
     .when('/sell/:id', {
-      templateUrl: 'javascripts/sell/sell.html',
+      templateUrl: 'script/sell/sell.html',
       controller: 'SellController',
       controllerAs: 'vm',
       resolve: {

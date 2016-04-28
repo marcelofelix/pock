@@ -1,98 +1,93 @@
-var gulp = require('gulp')
-var bower = require('main-bower-files')
-var livereload = require('gulp-livereload');
-var gulpLoadPlugins = require('gulp-load-plugins');
-var p = gulpLoadPlugins();
-var lib    = require('bower-files')();
-var cssmin = require('gulp-cssmin');
-var ngAnnotate = require('gulp-ng-annotate');
-var ngTemplates = require('gulp-ng-templates');
+var gulp = require('gulp'),
+    del = require('gulp-clean'),
+    sass = require('gulp-sass'),
+    bower = require('main-bower-files'),
+    concat = require('gulp-concat'),
+    babel = require('gulp-babel'),
+    livereload = require('gulp-livereload'),
+    run = require('run-sequence'),
+    gif = require('gulp-if'),
+    ngTemplate = require('gulp-ng-templates'),
+    uglify = require('gulp-uglify'),
+    cssnano = require('gulp-cssnano')
+
+var build = true;
+
+var isBuild = () => { return build }
 
 var src = {
-  all: './web/**/*',
-  html: './web/**/*.html',
-  images: './web/assets/images/*.svg',
-  js: './web/javascripts/**/*.js',
-  template: './web/javascripts/**/*.html',
-  scss: 'web/stylesheets/**/*.scss',
-  dist: './public',
-  base: {base: './web'}
+  css: './web/style/**/*.scss',
+  js: './web/script/**/*.js',
+  templates: './web/script/**/*.html',
+  img: './web/images/**/*',
+  root: './web/*.*'
 }
 
+var dist = {
+  js: './public/script',
+  css: './public/style',
+  images: './public/images',
+  root: './public/'
+}
 
-gulp.task('sass', () => {
-  return sass(src.scss, {style: 'expanded'})
-    .pipe(gulp.dest(src.dist))
-    .pipe(livereload())
-});
+gulp.task('clean', () => {
+  return gulp.src(dist.root, {read: false})
+    .pipe(del())
+})
 
-gulp.task('images', () => {
-  return gulp.src(src.images, src.base)
-    .pipe(gulp.dest(src.dist))
-    .pipe(livereload())
-});
+gulp.task('style', () => {
+  gulp.src(src.css)
+    .pipe(sass())
+    .pipe(gif(isBuild, cssnano()))
+    .pipe(gulp.dest(dist.css))
+
+  gulp.src(bower('**/*.css'))
+    .pipe(concat('vendor.css'))
+    .pipe(gif(isBuild, cssnano()))
+    .pipe(gulp.dest(dist.css))
+})
 
 gulp.task('js', () => {
-  return gulp.src(src.js, src.base)
-    .pipe(gulp.dest(src.dist))
-    .pipe(babel())
-    .pipe(livereload())
-})
-
-gulp.task('html', () => {
-  return gulp.src(src.html, src.base)
-    .pipe(gulp.dest(src.dist))
-    .pipe(livereload())
-})
-
-gulp.task('bower', () => {
-  return gulp.src(bower())
-    .pipe(gulp.dest(src.dist + '/vendor'))
-    .pipe(livereload())
-})
-
-gulp.task('dev', ['sass', 'js', 'html', 'images', 'bower'], () => {
-  livereload.listen();
-  gulp.watch(src.all,['sass', 'js', 'html', 'images', 'bower'])
-})
-
-gulp.task('clean', () => { gulp.src(src.dist + '/*').pipe(p.clean())});
-
-gulp.task('build',  () => {
-
-  gulp.src(src.template)
-		.pipe(ngTemplates({
-      filename: 'templates.min.js',
-      module: 'pockApp',
-      standalone: false,
-      path: (path, base) => {
-        return path.replace(base,'javascripts/');
-      }
-    }))
-		.pipe(gulp.dest(src.dist));
-
   gulp.src(src.js)
-    .pipe(p.concat('main.js'))
-    .pipe(ngAnnotate())
-    .pipe(p.babel())
-    .pipe(p.uglify())
-    .pipe(gulp.dest(src.dist))
+    .pipe(babel())
+    .pipe(gif(isBuild, concat('main.min.js')))
+    .pipe(gulp.dest(dist.js))
 
-  gulp.src(src.scss)
-   .pipe(p.sass({outputStyle: 'compressed'}))
-   .pipe(gulp.dest(src.dist));
+  gulp.src(src.templates)
+    .pipe(gif(isBuild, ngTemplate({
+      filename: 'templates.js',
+      module: 'pockApp',
+      standalone: true,
+      path: (path, base) => {
+        return path.replace(base, '');
+      }
+    })))
+    .pipe(gulp.dest(dist.js))
 
-  gulp.src(lib.ext('js').files)
-    .pipe(p.concat('vendor.js'))
-    // .pipe(ngAnnotate())
-    // .pipe(p.uglify())
-    .pipe(gulp.dest(src.dist))
+  gulp.src(bower('**/*.js'))
+    .pipe(gif(isBuild, concat('vendor.min.js')))
+    .pipe(gulp.dest(dist.js))
+})
 
-  gulp.src(lib.ext('css').files)
-    .pipe(cssmin())
-    .pipe(p.concat('vendor.css'))
-    .pipe(gulp.dest(src.dist))
+gulp.task('images', () => {
+  gulp.src(src.img)
+    .pipe(gulp.dest(dist.images))
+})
 
-  gulp.src(src.images, src.base)
-    .pipe(gulp.dest(src.dist))
-});
+gulp.task('root', () => {
+  gulp.src(src.root)
+    .pipe(gulp.dest(dist.root))
+})
+
+gulp.task('watch', ['style', 'js', 'images', 'root'], () => {
+  livereload.listen();
+  gulp.watch(src.js, ['js']).on('change', livereload.changed);
+  gulp.watch(src.css, ['style']).on('change', livereload.changed);
+  gulp.watch(src.img, ['images']).on('change', livereload.changed);
+  gulp.watch(src.root, ['root']).on('change', livereload.changed);
+})
+
+gulp.task('default', ['clean'], () => {
+  build = true;
+  run(['style', 'js', 'images', 'root'])
+})

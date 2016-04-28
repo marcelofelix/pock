@@ -3,9 +3,8 @@
   <head>
     <title>Pock</title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="vendor/angular-material.css">
-    <link rel="stylesheet" href="vendor/angular-ui-notification.css">
-    <link rel="stylesheet" href="stylesheets/main.css">
+    <link rel="stylesheet" href="style/vendor.css">
+    <link rel="stylesheet" href="style/main.css">
   </head>
 
   <body ng-app="pockApp" ng-controller="HomeController as home">
@@ -17,13 +16,13 @@
       <section layout="row" class="menu" layout-align="space-between center">
         <section layout="row">
           <md-button aria-label="Produtos" class="md-icon-button" ng-href="/#/product">
-            <md-icon md-svg-src="/assets/images/product.svg"></md-icon>
+            <md-icon md-svg-src="/images/product.svg"></md-icon>
           </md-button>
           <md-button aria-label="Notas" class="md-icon-button" ng-href="/#/purchase">
-            <md-icon md-svg-src="/assets/images/buy.svg"></md-icon>
+            <md-icon md-svg-src="/images/buy.svg"></md-icon>
           </md-button>
           <md-button aria-label="Vendas" class="md-icon-button" ng-href="/#/sell">
-            <md-icon md-svg-src="/assets/images/sell.svg"></md-icon>
+            <md-icon md-svg-src="/images/sell.svg"></md-icon>
           </md-button>
         </section>
         <label class="action">{{home.menu.action}}</label>
@@ -32,31 +31,31 @@
     <div class="home__content">
       <div ng-view=""></div>
     </div>
-    <script src="vendor/moment.js"></script>
-    <script src="vendor/lodash.js"></script>
-    <script src="vendor/angular.js"></script>
-    <script src="vendor/angular-route.js"></script>
-    <script src="vendor/angular-animate.js"></script>
-    <script src="vendor/angular-aria.js"></script>
-    <script src="vendor/angular-material.js"></script>
-    <script src="vendor/angular-messages.js"></script>
-    <script src="vendor/angular-ui-notification.js"></script>
-    <script src="vendor/angular-input-masks-standalone.js"></script>
-    <script src="vendor/ng-file-upload.js"></script>
+    <script src="script/moment.js"></script>
+    <script src="script/lodash.js"></script>
+    <script src="script/angular.js"></script>
+    <script src="script/angular-route.js"></script>
+    <script src="script/angular-animate.js"></script>
+    <script src="script/angular-aria.js"></script>
+    <script src="script/angular-material.js"></script>
+    <script src="script/angular-messages.js"></script>
+    <script src="script/angular-ui-notification.js"></script>
+    <script src="script/angular-input-masks-standalone.js"></script>
+    <script src="script/ng-file-upload.js"></script>
 
-    <script src="javascripts/main.js"></script>
-    <script src="javascripts/directives/currency.js"></script>
-    <script src="javascripts/interceptors/loading.js"></script>
-    <script src="javascripts/services/menu.service.js"></script>
-    <script src="javascripts/home/home.controller.js"></script>
-    <script src="javascripts/product/product.controller.js"></script>
-    <script src="javascripts/product/product-list.controller.js"></script>
-    <script src="javascripts/product/products.service.js"></script>
-    <script src="javascripts/purchase/purchase.controller.js"></script>
-    <script src="javascripts/purchase/purchase-list.controller.js"></script>
-    <script src="javascripts/purchase/purchase-service.js"></script>
-    <script src="javascripts/sell/sell.controller.js"></script>
-    <script src="javascripts/sell/sell-list.controller.js"></script>
-    <script src="javascripts/sell/sell.service.js"></script>
+    <script src="script/main.js"></script>
+    <script src="script/directives/currency.js"></script>
+    <script src="script/interceptors/loading.js"></script>
+    <script src="script/services/menu.service.js"></script>
+    <script src="script/home/home.controller.js"></script>
+    <script src="script/product/product.controller.js"></script>
+    <script src="script/product/product-list.controller.js"></script>
+    <script src="script/product/products.service.js"></script>
+    <script src="script/purchase/purchase.controller.js"></script>
+    <script src="script/purchase/purchase-list.controller.js"></script>
+    <script src="script/purchase/purchase-service.js"></script>
+    <script src="script/sell/sell.controller.js"></script>
+    <script src="script/sell/sell-list.controller.js"></script>
+    <script src="script/sell/sell.service.js"></script>
   </body>
 </html>
