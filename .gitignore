@@ -10,6 +10,7 @@ capybara-*.html
 /.sass-cache
 /coverage/
 /node_modules/
+/.sass-cache
 /spec/tmp
 **.orig
 rerun.txt
