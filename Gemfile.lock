@@ -207,7 +207,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  byebug
   coffee-rails (~> 4.1.0)
   figaro (~> 1.1, >= 1.1.1)
   guard
