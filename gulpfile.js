@@ -95,7 +95,7 @@ gulp.task('watch', ['style', 'js', 'images', 'root'], () => {
   gulp.watch(src.root, ['root']).on('change', livereload.changed);
 })
 
-gulp.task('default', ['clean'], () => {
+gulp.task('heroku:production', ['clean'], () => {
   build = true;
   run(['style', 'js', 'images', 'root'])
 })
