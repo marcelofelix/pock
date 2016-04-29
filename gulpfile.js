@@ -13,6 +13,7 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     htmlreplace = require('gulp-html-replace');
 
+
 var build = false;
 
 var isBuild = () => { return build }
