@@ -2,9 +2,11 @@
 <html>
   <head>
     <title>Pock</title>
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <!-- build:css -->
     <link rel="stylesheet" href="style/vendor.css">
     <link rel="stylesheet" href="style/main.css">
+    <!-- endbuild -->
   </head>
 
   <body ng-app="pockApp" ng-controller="HomeController as home">
@@ -31,6 +33,7 @@
     <div class="home__content">
       <div ng-view=""></div>
     </div>
+    <!-- build:js -->
     <script src="script/moment.js"></script>
     <script src="script/lodash.js"></script>
     <script src="script/angular.js"></script>
@@ -57,5 +60,6 @@
     <script src="script/sell/sell.controller.js"></script>
     <script src="script/sell/sell-list.controller.js"></script>
     <script src="script/sell/sell.service.js"></script>
+    <!-- endbuild -->
   </body>
 </html>

@@ -9,9 +9,11 @@ var gulp = require('gulp'),
     gif = require('gulp-if'),
     ngTemplate = require('gulp-ng-templates'),
     uglify = require('gulp-uglify'),
-    cssnano = require('gulp-cssnano')
+    cssnano = require('gulp-cssnano'),
+    rename = require('gulp-rename'),
+    htmlreplace = require('gulp-html-replace');
 
-var build = true;
+var build = false;
 
 var isBuild = () => { return build }
 
@@ -39,11 +41,13 @@ gulp.task('style', () => {
   gulp.src(src.css)
     .pipe(sass())
     .pipe(gif(isBuild, cssnano()))
+    .pipe(gif(isBuild, rename('main.min.css')))
     .pipe(gulp.dest(dist.css))
 
   gulp.src(bower('**/*.css'))
     .pipe(concat('vendor.css'))
     .pipe(gif(isBuild, cssnano()))
+    .pipe(gif(isBuild, rename('vendor.min.css')))
     .pipe(gulp.dest(dist.css))
 })
 
@@ -55,11 +59,11 @@ gulp.task('js', () => {
 
   gulp.src(src.templates)
     .pipe(gif(isBuild, ngTemplate({
-      filename: 'templates.js',
+      filename: 'templates.min.js',
       module: 'pockApp',
-      standalone: true,
+      standalone: false,
       path: (path, base) => {
-        return path.replace(base, '');
+        return path.replace(base, 'script/');
       }
     })))
     .pipe(gulp.dest(dist.js))
@@ -76,6 +80,10 @@ gulp.task('images', () => {
 
 gulp.task('root', () => {
   gulp.src(src.root)
+    .pipe(gif(isBuild,htmlreplace({
+      js: ['script/vendor.min.js', 'script/main.min.js', 'script/templates.min.js'],
+      css: ['style/vendor.min.css', 'style/main.min.css']
+    })))
     .pipe(gulp.dest(dist.root))
 })
 
